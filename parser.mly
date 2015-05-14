@@ -59,7 +59,7 @@ main:
       | _ -> choke "Only dhcp options are allowed in the global section")
       statements
   in
-  Config.{ subnets; options }
+  { Config.subnets; options }
 }
 
 ips:
@@ -146,5 +146,5 @@ host:
           | _ -> choke "Internal error 5, report this with the config file")
     with Not_found -> None
   in
-  Config.{ hostname; options; fixed_addr; hw_addr }
+  { Config.hostname; options; fixed_addr; hw_addr }
 }
