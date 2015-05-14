@@ -25,9 +25,13 @@ let find_map f t =
   loop t
 
 let finalize f g =
-  match f () with x -> g ();
-    x | exception e -> g ();
-    raise e
+  try
+    let x = f () in
+    g ();
+    x
+  with exn ->
+    g ();
+    raise exn
 
 open Ctypes
 open Foreign
